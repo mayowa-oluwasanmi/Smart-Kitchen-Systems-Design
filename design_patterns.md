@@ -80,14 +80,3 @@ To support **synchronisation with nutrition apps and fitness trackers**, the sys
 
 ---
 
-## 7. Singleton Pattern (System Configuration)
-
-While not implemented directly, the Smart Kitchen may rely on Singleton-like components for system-wide configuration values, such as:
-- Threshold values (e.g., low-calorie limits)
-- Daily TDEE targets
-- Sensor calibration settings
-
-Ensuring a single, centralized source of configuration helps maintain consistent behavior across all modules.
-
-
-
