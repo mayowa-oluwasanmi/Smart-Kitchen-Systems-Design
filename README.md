@@ -6,6 +6,10 @@ The Smart Kitchen System is designed to automate the tracking of nutritional int
 
 This system's significance lies in its improvements over previous iterations of nutrition tracking Smart Kitchens, including synchronisation with mobile tracking apps and fitness trackers, the ability to track prepackaged foods, and a recommender system for low-calorie ingredients. These upgrades provide users with better tools to make informed choices about their daily diet, leading to improved habits and overall health.
 
+![Screenshot_5-6-2025_18327_](https://github.com/user-attachments/assets/6d696e63-6fd3-4ab1-90c4-6e494a558212)
+
+![Screenshot_5-6-2025_183143_](https://github.com/user-attachments/assets/44bedcbc-c0ce-4519-b308-532451549d17)
+
 ## Key Features
 
 - Automatic ingredient tracking with weight sensors, barcode scanners, and CMOS cameras  
