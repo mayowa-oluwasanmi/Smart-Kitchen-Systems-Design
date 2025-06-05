@@ -96,21 +96,5 @@ The Smart Kitchen automates food intake tracking by combining sensor data (weigh
 
 ---
 
-## 3. Process Flow Diagram (Summary)
-
-```plaintext
-User places item
-      ↓
-Sensors measure weight, scan barcode, capture image
-      ↓
-Microcontroller collects data → sends JSON payload over Wi-Fi
-      ↓
-Backend Server queries Oracle DB for nutrition data
-      ↓
-Backend calculates nutritional values based on weight
-      ↓
-Nutritional data sent to LCD Tablet for display
-      ↓
-User views real-time feedback & interacts with system
-      ↓
-Data synced with external apps for comprehensive tracking
+## 3. Process Flow Diagram 
+![Screenshot_5-6-2025_18327_](https://github.com/user-attachments/assets/010fec14-bab7-4dce-a848-be6b295e76b6)
