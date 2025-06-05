@@ -22,17 +22,11 @@ This system's significance lies in its improvements over previous iterations of 
 
 ## How to Use
 
-This repository contains design documents, research findings, and software code for the Smart Kitchen System.  
-- See `/docs` for detailed system design and requirements.  
-- See `/code` for microcontroller firmware and Python scripts.
--  See`/images` — Folder containing diagrams or figures used in the report.
-- Instructions for setup and running the system are included in `/docs/setup.md`.
-
+This repository contains system requirements, design patterns, detailed use cases and process modelling for the Smart Kitchen System.  
 
 ## Acknowledgements  
 - Data sources: FoodData Central, CalorieNinjas  
 - References and literature cited in the design documents  
-
 
 ## Contact
 For questions or collaboration, contact: mayowa.oluwasanmi1@gmail.com
