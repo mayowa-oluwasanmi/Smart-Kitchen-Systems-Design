@@ -1,52 +1,128 @@
-# Use Cases for Smart Kitchen System
-
-This document describes the key use cases for the Smart Kitchen system based on the project report.
+# Detailed Use Cases for Smart Kitchen System
 
 ---
 
-## Actors
+## Use Case 1: Measure Food Intake
 
-- **User**: The person preparing meals and interacting with the Smart Kitchen.
-- **Smart Kitchen System**: The system that measures food intake, provides feedback, and manages data.
-- **Nutrition Tracking Apps**: External apps like MyFitnessPal integrated for synchronization.
-- **Fitness Trackers**: Wearable devices integrated with the system for comprehensive tracking.
+**Use Case ID:** UC-01  
+**Actors:** User, Smart Kitchen System  
+**Preconditions:**  
+- Smart Kitchen system is operational.  
+- Food items are ready to be prepared or consumed.  
+- Sensors (weight, barcode scanner, CMOS camera) are active and calibrated.  
 
----
+**Basic Flow:**  
+1. User places a single food item on the kitchen counter or stovetop.  
+2. Load cell weight sensors measure the weight of the item.  
+3. Barcode scanner scans the packaging if the item is prepackaged.  
+4. CMOS sensor captures an image if the item is fresh or unpackaged.  
+5. System processes the data to identify the food type and weight.  
+6. Nutritional information (calories, macronutrients) is retrieved from the backend database.  
+7. Data is logged and made ready for feedback display.
 
-## Use Cases
+**Alternate Flows:**  
+- 3a. If barcode cannot be read, system prompts user to manually input or retry.  
+- 4a. If CMOS image is unclear (poor lighting), system requests user to improve lighting or reposition item.  
+- 1a. If multiple items placed simultaneously, system may fail to differentiate (known limitation).
 
-### 1. Measure Food Intake
-
-**Description:**  
-The Smart Kitchen autonomously measures the weight of food items placed on counters or stovetops using load cell weight sensors. It identifies the type of food via barcode scanners for prepackaged items and CMOS sensors for fresh foods. This minimizes manual input and user effort, enabling seamless data collection integrated into daily kitchen routines.
-
----
-
-### 2. Provide Real-Time Nutritional Feedback
-
-**Description:**  
-As ingredients are detected, the system processes the data and presents real-time nutritional information on an LCD tablet interface. This includes calorie counts, macronutrient profiles (protein, carbohydrates, fats, sodium, potassium, iron, fiber, etc.), and other relevant nutritional values per meal, helping users make informed decisions as they cook.
-
----
-
-### 3. Synchronize with Nutrition and Fitness Apps
-
-**Description:**  
-The system aggregates nutritional intake data and syncs it with popular nutrition tracking apps and fitness trackers via WiFi. This allows users to view comprehensive dietary data, combining meals eaten at home with those tracked outside, all in one place for better overall nutritional awareness.
+**Postconditions:**  
+- Food intake data is accurately recorded in the system database.  
+- Nutritional information is ready to be displayed.
 
 ---
 
-### 4. Recommend Low-Calorie Food Alternatives
+## Use Case 2: Provide Real-Time Nutritional Feedback
 
-**Description:**  
-Based on the nutritional data and user goals, the Smart Kitchen suggests healthier, low-calorie food alternatives (less than 100 kcal per 100 grams). These recommendations empower users to make informed choices without enforcing decisions, following the principle of providing an “informed veto.”
+**Use Case ID:** UC-02  
+**Actors:** User, Smart Kitchen System  
+**Preconditions:**  
+- Food intake measurement has been successfully completed.  
+- LCD tablet interface is active and connected to the system.  
+
+**Basic Flow:**  
+1. System calculates the calorie count and macronutrient profile based on measured data.  
+2. Real-time nutritional data is displayed on the LCD tablet.  
+3. User views calorie count, protein, carbs, fats, sodium, potassium, iron, fiber, etc.  
+4. User adjusts meal preparation or ingredients based on feedback if desired.
+
+**Alternate Flows:**  
+- 2a. If the tablet is not responsive, system attempts to resend data or alerts user.  
+- 4a. User ignores feedback (system does not enforce changes, just provides information).
+
+**Postconditions:**  
+- User is informed about the nutritional content of current meal preparation.  
+- Data is logged for future reference.
 
 ---
 
-### 5. Display Historical Dietary Logs
+## Use Case 3: Synchronize with Nutrition and Fitness Apps
 
-**Description:**  
-Users can access past logs of daily or weekly nutritional intake through the tablet interface. This feature provides summaries of calorie and macronutrient consumption over time, supporting self-monitoring and dietary awareness.
+**Use Case ID:** UC-03  
+**Actors:** Smart Kitchen System, Nutrition Tracking Apps, Fitness Trackers  
+**Preconditions:**  
+- User has authorized integration with third-party apps.  
+- Network (WiFi 802.11ac) connection is stable.  
+
+**Basic Flow:**  
+1. Smart Kitchen system aggregates daily nutritional intake data.  
+2. Data is formatted into JSON and securely transmitted via HTTP to connected apps.  
+3. Nutrition and fitness apps update user profiles with new intake data.  
+4. User can view combined dietary logs from home and external meals.
+
+**Alternate Flows:**  
+- 2a. If network connection fails, data is queued and sent when connection is restored.  
+- 3a. If authorization is revoked, synchronization stops and user is notified.
+
+**Postconditions:**  
+- User's dietary data is synchronized across multiple platforms for comprehensive tracking.
+
+---
+
+## Use Case 4: Recommend Low-Calorie Food Alternatives
+
+**Use Case ID:** UC-04  
+**Actors:** User, Smart Kitchen System  
+**Preconditions:**  
+- User’s nutritional goals and preferences are set in the system.  
+- Food intake data is available for analysis.  
+
+**Basic Flow:**  
+1. System analyses current meal’s nutritional content.  
+2. System queries database for low-calorie alternatives (<100 kcal/100g) matching the type of ingredient used.  
+3. Recommended alternatives are displayed on the LCD tablet with nutritional benefits.  
+4. User reviews recommendations and chooses to accept or ignore.  
+
+**Alternate Flows:**  
+- 3a. If no suitable alternative found, system informs user accordingly.  
+- 4a. User rejects all recommendations; system logs decision but does not enforce changes.
+
+**Postconditions:**  
+- User receives guidance to support healthier eating choices.  
+- Recommendations help inform user decisions without being intrusive.
+
+---
+
+## Use Case 5: Display Historical Dietary Logs
+
+**Use Case ID:** UC-05  
+**Actors:** User, Smart Kitchen System  
+**Preconditions:**  
+- The system has logged dietary intake data over time.  
+- LCD tablet is active and connected.  
+
+**Basic Flow:**  
+1. User selects the ‘Previous Log’ option on the tablet interface.  
+2. System retrieves historical dietary data (daily/weekly summaries) from the database.  
+3. Nutritional intake summaries are displayed clearly with calories and macronutrient breakdown.  
+4. User reviews past intake to inform future meal choices.
+
+**Alternate Flows:**  
+- 2a. If no previous data exists, system informs the user.  
+- 3a. If display malfunctions, system attempts to reload or alerts user.
+
+**Postconditions:**  
+- User gains insight into past eating habits.  
+- Supports self-monitoring and dietary awareness over time.
 
 ---
 
